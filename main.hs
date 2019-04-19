@@ -9,6 +9,10 @@ type Medicamento = (Nome,Quantidade)
 type Medicamentos = [Medicamento]
 type Prescricao = (Nome,Horario,HorarioProximo)
 type PlanoMedicamento = [Prescricao]
+type Preco = Int
+type Farmacia = (Nome,[(Medicamento,Preco)])
+type Mercado = [Farmacia]
+type Compra = (Preco, Nome)
 
 adicionarMedicamento :: Medicamento -> Medicamentos -> Medicamentos
 adicionarMedicamento medicamento medicamentos =
@@ -36,10 +40,24 @@ tomarMedicamentoSOS nome (x:xs)
   | otherwise = x:tomarMedicamentoSOS nome xs
 
 -- tomarMedicamentosHorario :: PlanoMedicamento -> Medicamentos -> HoraAtual -> (PlanoMedicamento,Medicamentos)
+-- tomarMedicamentosHorario (x:xs) _ _ = []
+-- tomarMedicamentosHorario (x:xs) medicamentos horaAtual
+--   | horaAtual `elem` map (\y -> fsnd y) fsnd x = ftrd x = nextElemDeX
+--   | otherwise = x:tomarMedicamentoSOS nome xs
 
 cadastrarAlarmes :: PlanoMedicamento -> Horario
 cadastrarAlarmes planoMedicamento =
   sort (concat (map (\x -> fsnd x ) planoMedicamento))
+
+
+listarMedicamentosComprar :: Medicamentos ->  Medicamentos
+listarMedicamentosComprar medicamentos =
+  filter (\x -> snd(x) == 0) medicamentos
+
+
+-- comprarMedicamentosDias ::  PlanoMedicamento -> Medicamentos -> Int -> Medicamentos
+
+-- comprarMedicamentosPreco :: Medicamentos -> Mercado -> Compra
 
 -- HELPERS
 
@@ -53,5 +71,5 @@ ftrd :: (a, b, c) -> c
 ftrd (a, b, c) = c
 
 
--- let medicamentos = [("r1",10), ("r2",7),("r3",8)]
--- let planoMedicamento = [("r1",[5,8,9],10), ("r2",[8,5,4],7),("r3",[9,5,1],8)]
+-- medicamentos = [("r1",10), ("r2",7),("r3",8)]
+-- planoMedicamento = [("r1",[5,8,9],10), ("r2",[8,5,4],7),("r3",[9,5,1],8)]
