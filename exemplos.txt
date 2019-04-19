@@ -1,0 +1,160 @@
+*Main> adicionarMedicamento  ("R1", 20) [("R1",10), ("R2",8), ("R3",5)]
+[("R1",30),("R2",8),("R3",5)]
+
+*Main> adicionarMedicamento  ("R4", 2)  [("R1",10), ("R2",8), ("R3",5)]
+[("R4",2),("R1",10),("R2",8),("R3",5)]
+
+*Main> removerMedicamento "R2"  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R3",5)]
+
+*Main> removerMedicamento "R4"  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> consultarMedicamento "R2"  [("R1",10), ("R2",8), ("R3",5)]
+("R2",8)
+
+*Main> consultarMedicamento "R4"  [("R1",10), ("R2",8), ("R3",5)]
+("",0)
+
+*Main> alterarMedicamento  ("R2",100)  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R2",100),("R3",5)]
+
+*Main> alterarMedicamento  ("R4",100)  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> tomarMedicamentoSOS "R2"  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R2",7),("R3",5)]
+
+*Main> tomarMedicamentoSOS "R4"  [("R1",10), ("R2",8), ("R3",5)]
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> plano1
+[("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],11)]
+
+*Main> medicamentos1
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> tomarMedicamentosHorario plano1 medicamentos1 6
+([("R1",[6,10,14],10),("R2",[8,10,14],8),("R3",[11,15,24],11)],[("R1",9),("R2",8),("R3",5)])
+*Main> plano2
+[("R1",[6,10,14],10),("R2",[8,10,14],8),("R3",[11,15,24],11)]
+
+*Main> medicamentos2
+[("R1",9),("R2",8),("R3",5)]
+
+*Main> tomarMedicamentosHorario plano2 medicamentos2 8
+([("R1",[6,10,14],10),("R2",[8,10,14],10),("R3",[11,15,24],11)],[("R1",9),("R2",7),("R3",5)])
+
+*Main> plano3
+[("R1",[6,10,14],10),("R2",[8,10,14],10),("R3",[11,15,24],11)]
+
+*Main> medicamentos3
+[("R1",9),("R2",7),("R3",5)]
+
+*Main> tomarMedicamentosHorario plano3 medicamentos3 10
+([("R1",[6,10,14],14),("R2",[8,10,14],14),("R3",[11,15,24],11)],[("R1",8),("R2",6),("R3",5)])
+
+*Main> plano4
+[("R1",[6,10,14],14),("R2",[8,10,14],14),("R3",[11,15,24],11)]
+
+*Main> medicamentos4
+[("R1",8),("R2",6),("R3",5)]
+
+*Main> tomarMedicamentosHorario plano4 medicamentos4 11
+([("R1",[6,10,14],14),("R2",[8,10,14],14),("R3",[11,15,24],15)],[("R1",8),("R2",6),("R3",4)])
+
+*Main> plano5
+[("R1",[6,10,14],14),("R2",[8,10,14],14),("R3",[11,15,24],15)]
+
+*Main> medicamentos5
+[("R1",8),("R2",6),("R3",4)]
+
+*Main> tomarMedicamentosHorario plano5 medicamentos5 14
+([("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],15)],[("R1",7),("R2",5),("R3",4)])
+
+*Main> plano6
+[("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],15)]
+
+*Main> medicamentos6
+[("R1",7),("R2",5),("R3",4)]
+
+*Main> tomarMedicamentosHorario plano6 medicamentos6 15
+([("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],24)],[("R1",7),("R2",5),("R3",3)])
+
+*Main> plano7
+[("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],24)]
+
+*Main> medicamentos7
+[("R1",7),("R2",5),("R3",3)]
+
+*Main> tomarMedicamentosHorario plano7 medicamentos7 24
+([("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],11)],[("R1",7),("R2",5),("R3",2)])
+
+*Main> cadastrarAlarmes [("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],11)]
+[6,8,10,11,14,15,24]
+
+*Main> cadastrarAlarmes [("R1",[6,10,21],6),("R2",[7,14,21,24],14)]
+[6,7,10,14,21,24]
+
+*Main> cadastrarAlarmes [("R1",[6,10],6),("R2",[5,8,10,24],10)]
+[5,6,8,10,24]
+
+*Main> listarMedicamentosComprar [("R1",10), ("R2",8), ("R3",5)]
+[]
+
+*Main> listarMedicamentosComprar [("R1",10), ("R2",0), ("R3",5)]
+[("R2",0)]
+
+*Main> listarMedicamentosComprar [("R1",10), ("R2",0), ("R3",5), ("R4", 0)]
+[("R2",0),("R4",0)]
+
+*Main> plano11
+[("R1",[6,10,14,21],6),("R2",[8,16],8),("R3",[11,15,24],11)]
+
+*Main> medicamentos11
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> comprarMedicamentosDias plano11 medicamentos11 10
+[("R1",30),("R2",12),("R3",25)]
+
+*Main> plano22
+[("R1",[6,10,14,21],14),("R2",[8,16],16),("R3",[11,15,24],15)]
+
+*Main> medicamentos22
+[("R1",5),("R2",30),("R3",9)]
+
+*Main> comprarMedicamentosDias plano22 medicamentos22 7
+[("R1",23),("R2",0),("R3",12)]
+
+
+*Main> medicamentos10
+[("R1",1),("R2",1),("R3",1)]
+
+*Main> mercado
+[("F1",[(("R1",100),20),(("R2",100),5),(("R3",100),600)]),("F2",[(("R1",100),10),
+(("R2",100),5),(("R3",100),600)]),("F3",[(("R1",100),15),(("R2",100),2),(("R3",100),100)])]
+
+*Main> comprarMedicamentosPreco medicamentos10 mercado
+(117,"F3")
+
+*Main> comprarMedicamentosPrecoFlex  medicamentos10  mercado
+[(102,"F3",[("R2",1),("R3",1)]),(10,"F2",[("R1",1)])]
+
+*Main> medicamentos1
+[("R1",10),("R2",8),("R3",5)]
+
+*Main> plano1
+[("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],11)]
+
+*Main> careTaker plano1 1 medicamentos1
+([("R1",[6,10,14],6),("R2",[8,10,14],8),("R3",[11,15,24],11)],[("R1",7),("R2",5),("R3",2)])
+
+
+
+
+
+
+
+
+
+
